@@ -8,48 +8,54 @@
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
-    <title>Address Book</title>
+    <title>Places You've Been</title>
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-        <h1>Address Book</h1>
-        <h2>Add a contact:</h2>
-        <form id="contact-input">
+        <h1>Places You've Been</h1>
+        <h2>Add a location:</h2>
+        <form id="location-input">
           <div class="form-group">
-            <label for="first-name">First name</label>
-            <input id="first-name-input" class="form-control" type="text">
+            <label for="city-name">City name</label>
+            <input id="city-name-input" class="form-control" type="text">
           </div>
           <div class="form-group">
-            <label for="last-name">Last name</label>
-            <input id="last-name-input" class="form-control" type="text">
+            <label for="country-name">Country name</label>
+            <input id="country-name-input" class="form-control" type="text">
           </div>
           <div class="form-group">
-            <label for="street">Street</label>
-            <input id="street-input" class="form-control" type="text">
+            <label for="year">Year</label>
+            <input id="year-input" class="form-control" type="text">
           </div>
           <div class="form-group">
-            <label for="city">City</label>
-            <input id="city-input" class="form-control" type="text">
+            <label for="notes">Notes</label>
+            <input id="notes-input" class="form-control" type="text">
           </div>
-          <div class="form-group">
-            <label for="state">State</label>
-            <input id="state-input" class="form-control" type="text">
-          </div>
+          <div id="landmarks">
+            <div class="form-group">
+              <label for="landmarks">Landmark</label>
+              <input class="form-control new-landmark" type="text">
+            </div>
+            <!-- js add landmarks here -->
+        </div>
           <button type="submit" class="btn">Add</button>
+          <button id="add-landmark" class="btn">Add Landmarks</button>
         </form>
-        <h2>Contacts:</h2>
-        <ul id="contact-list">
+        <h2>Locations:</h2>
+        <ul id="location-list">
         </ul>
         </div>
         <div class="col-md-6">
-          <div class="contact-info">
-            <h2 id="fullNameDisplay"></h2>
-            <p id="firstNameDisplay"></p>
-            <p id="lastNameDisplay"></p>
-            <p>Address:</p>
-            <ul id="addressDisplay">
+          <div class="location-info">
+            <h2 id="locationNameDisplay"></h2>
+            <p id="cityDisplay"></p>
+            <p id="countryDisplay"></p>
+            <p id="yearDisplay"></p>
+            <p id="notesDisplay"></p>
+            <p>Landmarks:</p>
+            <ul id="landmarksDisplay">
             </ul>
           </div>
         </div>

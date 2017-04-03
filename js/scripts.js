@@ -1,40 +1,62 @@
 //business logic
-function Contact(firstName, lastName, street, city, state){
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.street = street;
-  this.city = city;
-  this.state = state;
-}
-
-Contact.prototype.fullName = function() {
-  return `${this.firstName} ${this.lastName}`;
+function Location (cityName, countryName, year, notes){
+  this.cityName = cityName;
+  this.countryName = countryName;
+  this.year = year;
+  this.notes = notes;
+  this.landmarks = [];
 };
 
-Contact.prototype.fullAddress = function() {
-  return `${this.street}, ${this.city}, ${this.state}`;
+function Landmark (landmark) {
+  this.landmark = landmark;
+};
+
+Location.prototype.locationName = function() {
+  return `${this.cityName} ${this.countryName}`;
+};
+
+function resetFields() {
+  $("#city-name-input").val("");
+  $("#country-name-input").val("");
+  $("#year-input").val("");
+  $("#notes-input").val("");
+  $("input.new-landmark").val("");
 };
 
 //user interface logic
 $(document).ready(function(){
 
-  $("form#contact-input").submit(function(event){
-    event.preventDefault();
-    var firstName = $("#first-name-input").val();
-    var lastName = $("#last-name-input").val();
-    var street = $("#street-input").val();
-    var city = $("#city-input").val();
-    var state = $("#state-input").val();
-    let contact = new Contact(firstName, lastName, street, city, state);
-    $("#contact-list").append("<li>" + contact.firstName + " " + contact.lastName + "</li>")
+  $("#add-landmark").click(function(){
+    $("#landmarks").append(`<div class="form-group">
+                              <label for="landmarks">Landmark</label>
+                              <input class="form-control new-landmark" type="text">
+                            </div>`)
+  });
 
-    $("#contact-list").last().click(function(){
-      $(".contact-info").show();
-      $("#fullNameDisplay").text(contact.fullName());
-      $("#firstNameDisplay").text(contact.firstName);
-      $("#lastNameDisplay").text(contact.lastName);
-      $("#addressDisplay").empty();
-      $("#addressDisplay").append(`<li>${contact.fullAddress()}</li>`)
+  $("form#location-input").submit(function(event){
+    event.preventDefault();
+    var cityName = $("#city-name-input").val();
+    var countryName = $("#country-name-input").val();
+    var year = $("#year-input").val();
+    var notes = $("#notes-input").val();
+    let location = new Location (cityName, countryName, year, notes);
+    $("#location-list").append("<li>" + location.cityName + " " + location.countryName + "</li>")
+    $(".new-landmark").each(function(){
+      var landmark = $(this).find("input.new-landmark").val();
+      var newLandmark = new Landmark (landmark);
+      location.landmarks.push(newLandmark)
+    });
+
+    $("#location-list").last().click(function(){
+      $(".location-info").show();
+      $("#locationNameDisplay").text(location.locationName());
+      $("#cityDisplay").text(location.cityName);
+      $("#countryDisplay").text(location.countryName);
+      $("#landmarksDisplay").empty();
+      location.landmarks.forEach(function(landmark){
+        $("#landmarksDisplay").append(`<li>${landmark.landmarks}</li>`)
+      });
+
     });
 
   });

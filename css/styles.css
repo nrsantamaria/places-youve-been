@@ -1,12 +1,15 @@
-#contact-list {
+#location-list {
   color: blue;
   cursor: pointer;
 }
 
-#contact-list li:hover {
+#location-list li:hover {
   text-decoration: underline;
 }
 
-.contact-info {
+#landmarks2-input {
+  display: none;
+}
+.location-info {
   display: none;
 }
