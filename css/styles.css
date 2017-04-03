@@ -1,0 +1,12 @@
+#contact-list {
+  color: blue;
+  cursor: pointer;
+}
+
+#contact-list li:hover {
+  text-decoration: underline;
+}
+
+.contact-info {
+  display: none;
+}
